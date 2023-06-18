@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Vocabulary</title>
+
+    <style>
+        .translate{
+            background: #fff;
+            border-radius: 12px;
+            line-height: 1;
+            padding: 0.5em 1em;
+            transition: .15s;
+            font-size: 20px;
+        }
+
+        #type-translate {
+            margin-top: 4em;
+            gap: 4em;
+            display: flex;
+            justify-content: center;
+        }
+        .translate:hover{
+            background: #58b4ff;
+        }
+
+        #unique{
+            margin-top: 2.5em;
+            font-size: 50px;
+            font-weight: bold;
+        }
+        .answer.show {
+            transition: .15s;
+        }
+        .answer {
+            background: #d7ffd2;
+            border-radius: 8px;
+            color: #444;
+            font-size: 1.5em;
+            line-height: 1;
+            padding: 0.5rem 1rem;
+            width: -moz-fit-content;
+            width: fit-content;
+        }
+    </style>
+</head>
+<body>
+  <div id="content">
+      <div class="form-group">
+          <label for="findLesson">Lesson</label>
+          <input class="form-control" id="findLesson" name="lesson">
+      </div>
+      <div th:if="${vocabulary != null}" id="unique" th:text="${vocabulary.vietNam}"></div>
+      <div id="type-translate">
+          <div th:if="${vocabulary != null}" class="translate" id="firstRomaji">Romaji</div>
+          <div th:if="${vocabulary != null}" class="answer show" th:text="${vocabulary.romaji}" id="secondRomaji" style="display: none"></div>
+          <div th:if="${vocabulary != null}" class="translate" id="firstJapan">Japanese</div>
+          <div th:if="${vocabulary != null}" class="answer show" th:text="${vocabulary.japanese}" id="secondJapan" style="display: none"></div>
+
+      </div>
+
+
+      <div th:if="${vocabulary != null}" class="translate" style="margin:5em 40%;">Refresh</div>
+
+  </div>
+</body>
+</html>
