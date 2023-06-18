@@ -20,6 +20,7 @@ $('body').on('keypress', '#findLesson', function (e) {
             processData: false
         }).done(function (data) {
             $('#content').replaceWith(htmlMarkupToNode(data));
+            document.getElementById("findLesson").value = lesson;
         })
     }
 
@@ -41,6 +42,18 @@ $('body').on('click', '#firstJapan', function (e) {
 
 })
 
+function refresh(){
+    let lesson = document.getElementById("findLesson").value;
+    $.ajax({
+        url: '/home/random-vocabulary',
+        type: 'get',
+        processData: false
+    }).done(function (data) {
+        $('#content').replaceWith(htmlMarkupToNode(data));
+        document.getElementById("findLesson").value = lesson;
+    })
+}
+
 function getVocabulary(e){
     const collection = document.getElementsByClassName("menu__item");
     for (let i = 0; i < collection.length; i++) {
@@ -53,8 +66,7 @@ function getVocabulary(e){
     $.ajax({
         url: '/home/vocabulary',
         type: 'get',
-        processData: false,
-        data: $('form#updateMUser').serialize()
+        processData: false
     }).done(function (data) {
         $('#content').replaceWith(htmlMarkupToNode(data));
     })
