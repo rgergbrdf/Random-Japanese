@@ -26,6 +26,15 @@ $('body').on('keypress', '#findLesson', function (e) {
 
 })
 
+$('body').on('keypress', '#searchByLesson', function (e) {
+    if (e.key === "Enter") {
+        let lesson = document.getElementById("searchByLesson").value;
+        e.preventDefault();
+        window.location = "/admin/vocabularies/"+lesson;
+    }
+
+})
+
 $('body').on('click', '#firstRomaji', function (e) {
     e = e || window.event;
     let target = e.target || e.srcElement;

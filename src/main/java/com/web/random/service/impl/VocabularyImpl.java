@@ -6,6 +6,9 @@ import com.web.random.repository.VocabularyRepository;
 import com.web.random.service.VocabularyService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,7 +28,18 @@ public class VocabularyImpl implements VocabularyService {
 
     @Override
     public List<Vocabulary> findByLesson(Integer lesson) {
-        List<Vocabulary> vocabularies = repository.findByLesson(lesson);
-        return vocabularies;
+        return repository.findByLesson(lesson);
+    }
+
+    @Override
+    public Page<Vocabulary> findByLesson(Integer page, Integer lesson) {
+        Pageable pageable = PageRequest.of(page - 1 , Integer.MAX_VALUE);
+        return repository.findByLesson(pageable, lesson);
+    }
+
+    @Override
+    public Page<Vocabulary> findAll(Integer page) {
+        Pageable pageable = PageRequest.of(page - 1 , 10);
+        return repository.findAll(pageable);
     }
 }

@@ -30,6 +30,7 @@ public class VocabularyController {
         return "vocabulary";
     }
 
+
     @GetMapping("/vocabulary/{lesson}")
     public String getByLesson(@PathVariable("lesson") Integer lesson, Model model){
         vocabularies = service.findByLesson(lesson);

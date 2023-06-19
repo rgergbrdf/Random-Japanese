@@ -27,6 +27,23 @@
       text-align: center;
     }
 
+    .type-menu {
+      gap: 4em;
+      display: flex;
+      justify-content: center;
+    }
+    .type-menu__item {
+      background: #fff;
+      border-radius: 12px;
+      line-height: 1;
+      padding: 0.5em 1em;
+      transition: .15s;
+    }
+
+    .type-menu__item:hover {
+      background: #58b4ff;
+    }
+
   </style>
 </head>
 <body>
@@ -34,7 +51,18 @@
   <div>Random Japanese</div>
 </header>
 
+<!--<main>-->
+<!--  <div class="type-menu">-->
+<!--    <div class="type-menu__item" onclick="getVocabulary()"></div>-->
+<!--    <div class="type-menu__item">Daily routine</div>-->
+<!--  </div>-->
+<!--  <div id="content">-->
+<!--  </div>-->
+<!--</main>-->
+
+
 <main>
+
   <form id="add-vocabulary" style="padding:2.5em 25%">
     <div class="form-group">
       <label for="vietnam">Việt Nam</label>
