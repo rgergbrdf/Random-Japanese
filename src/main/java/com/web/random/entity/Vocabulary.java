@@ -2,10 +2,12 @@ package com.web.random.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "vocabulary")
 @Data
+@NoArgsConstructor
 public class Vocabulary {
 
     @Id
@@ -23,4 +25,12 @@ public class Vocabulary {
 
     @Column(name = "lesson")
     private Integer lesson;
+
+    public Vocabulary(String vietNam, String japanese, Integer lesson) {
+        this.vietNam = vietNam;
+        this.japanese = japanese;
+        this.lesson = lesson;
+    }
+
+
 }
